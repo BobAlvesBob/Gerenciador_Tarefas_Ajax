@@ -2,7 +2,7 @@
 <?php require_once 'db_config.php'; ?>
 <?php
 
-// escape variables for security
+// Perform database query
 if (isset($_POST['task'])) $task = mysqli_real_escape_string($connection, $_POST['task']);
 if (isset($_POST['priority'])) $priority = mysqli_real_escape_string($connection, $_POST['priority']);
 if (isset($_POST['task_id'])) $taskId = mysqli_real_escape_string($connection, $_POST['task_id']);
@@ -17,7 +17,7 @@ else if (isset($_POST['edit'])) {
   $query = "UPDATE tasks SET task='$task', priority='$priority' WHERE task_id='$taskId'";
 }
 else {
-  die("Invalid action.");
+  die("Ação desconhecida.");
 }
 
 $result = mysqli_query($connection, $query);
